@@ -27,7 +27,14 @@ function App() {
     });
   };
 
-  const HandleDeleteTask = () => {};
+  const HandleDeleteTask = (id) => {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        tasks: prevState.tasks.filter((task) => task.id !== id),
+      };
+    });
+  };
 
   const HandleSelectProject = (id) => {
     setProjectsState((prevState) => {
@@ -77,9 +84,9 @@ function App() {
       return {
         ...prevState,
         selectedProjectId: undefined,
-        projects: prevState.projects.filter((project) => {
-          project.id !== prevState.selectedProjectId;
-        }),
+        projects: prevState.projects.filter(
+          (project) => project.id !== prevState.selectedProjectId
+        ),
       };
     });
   };
